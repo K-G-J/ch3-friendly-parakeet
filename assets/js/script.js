@@ -1,4 +1,4 @@
-var password = ""
+var password = "";
 // characters object
 var characters = {
   lowercase: "abcdefghijklmnopqrstuvwxyz",
@@ -63,23 +63,26 @@ var setPasswordCharacters = function() {
   password = alphabet + numbers + special;
   return;
 };
-
-// FUNCTION TO GENERATE PASSWORD 
-var generatePassword = function() {
-  // prompt and ask for password inputs 
-  setPasswordCharacters();
-  // Function to shuffle password characters 
+// Function to shuffle password characters 
 var shuffle = function() {
+  var passwordArray = [];
   // convert password to an array 
   var passwordArray = password.split("");
   // randomly sort array items 
-  passwordArray = array.sort(() => Math.random() - 0.5);
+  passwordArray = passwordArray.sort(() => Math.random() - 0.5);
   // set password length from setPasswordLength()
   passwordArray.length = setPasswordLength()
   // convert passwordArray back to string 
   password = passwordArray.join("");
   return;
 }
+
+// FUNCTION TO GENERATE PASSWORD 
+var generatePassword = function() {
+  // prompt and ask for password inputs 
+  setPasswordCharacters();
+  // shuffle characters in answers to prompts 
+  shuffle();
   // password displayed in an alert 
   window.alert("Your new password is " + password);
 };
