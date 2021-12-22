@@ -7,16 +7,23 @@ var characters = {
   special: "!+'@,-./:;<=>?@[]^_{}~#$%^&*()"
 };
 
-// Function to generate random number between 8 and 128 
-var setPasswordLength = function() {
-  var passwordLength = Math.floor(Math.random()*128)+8;
-  return passwordLength;
-};
-
-// Function to set password characters
+// Function to set password characters and length 
 var setPasswordCharacters = function() {
   // when prompt answered input validated and character type selected
   var alphabet, numbers, special;
+  // select length of password 
+  setLength = function() {
+    var promptLength = window.prompt("Please enter your password length between 8 and 90 characters.");
+    promptLength = parseInt(promptLength);
+    if (8 <= promptLength && promptLength <= 90) {
+      length = promptLength
+    } else {
+      window.alert("You need to provide a valid answer. Please try again.");
+      setLength();
+    }
+  }
+  setLength();
+  // select case of letters 
   while (alphabet === undefined) {
     var promptCase = window.prompt("Would you like your password to include UPPER case letters? Enter 'YES' or 'NO.'");
     switch (promptCase.toLowerCase()) {
@@ -31,6 +38,7 @@ var setPasswordCharacters = function() {
         break;
     }
   }
+  // include numbers or not 
   while (numbers === undefined) {
     var promptNumeric = window.prompt("Would you like your password to include numbers? Enter 'YES' or 'NO.'");
     switch (promptNumeric.toLowerCase()) {
@@ -45,6 +53,7 @@ var setPasswordCharacters = function() {
         break;
     }
   }
+  // include special characters or not 
   while (special === undefined) {
     var promptSpecial = window.prompt("Would you like your password to include special characters? Enter 'YES' or 'NO.'");
     switch (promptSpecial.toLowerCase()) {
@@ -63,25 +72,28 @@ var setPasswordCharacters = function() {
   password = alphabet + numbers + special;
   return;
 };
-// Function to shuffle password characters 
+
+
+// Function to shuffle password characters and set length 
 var shuffle = function() {
   var passwordArray = [];
   // convert password to an array 
   var passwordArray = password.split("");
   // randomly sort array items 
   passwordArray = passwordArray.sort(() => Math.random() - 0.5);
-  // set password length from setPasswordLength()
-  passwordArray.length = setPasswordLength()
+  // set password length from setLength() prompt 
+  passwordArray.length = length
   // convert passwordArray back to string 
   password = passwordArray.join("");
   return;
 }
 
+
 // FUNCTION TO GENERATE PASSWORD 
 var generatePassword = function() {
   // prompt and ask for password inputs 
   setPasswordCharacters();
-  // shuffle characters in answers to prompts 
+  // shuffle characters and set length 
   shuffle();
   // password displayed in an alert 
   window.alert("Your new password is " + password);
