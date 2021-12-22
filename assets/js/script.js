@@ -4,7 +4,7 @@ var characters = {
   lowercase: "abcdefghijklmnopqrstuvwxyz",
   uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
   numeric: "0123456789",
-  special: "!@#$%^&*()"
+  special: "!+'@,-./:;<=>?@[]^_{}~#$%^&*()"
 };
 
 // Function to generate random number between 8 and 128 
