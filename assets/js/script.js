@@ -13,9 +13,9 @@ var setPasswordCharacters = function() {
   var alphabet, numbers, special;
   // select length of password 
   setLength = function() {
-    var promptLength = window.prompt("Please enter your password length between 8 and 90 characters.");
+    var promptLength = window.prompt("Please enter your password length between 8 and 128 characters.");
     promptLength = parseInt(promptLength);
-    if (8 <= promptLength && promptLength <= 90) {
+    if (8 <= promptLength && promptLength <= 128) {
       length = promptLength
     } else {
       window.alert("You need to provide a valid answer. Please try again.");
@@ -79,6 +79,10 @@ var shuffle = function() {
   var passwordArray = [];
   // convert password to an array 
   var passwordArray = password.split("");
+  // increase password length if less than input length 
+  while (passwordArray.length < length) {
+    passwordArray = passwordArray.concat(passwordArray);
+  }
   // randomly sort array items 
   passwordArray = passwordArray.sort(() => Math.random() - 0.5);
   // set password length from setLength() prompt 
@@ -87,7 +91,6 @@ var shuffle = function() {
   password = passwordArray.join("");
   return;
 }
-
 
 // FUNCTION TO GENERATE PASSWORD 
 var generatePassword = function() {
