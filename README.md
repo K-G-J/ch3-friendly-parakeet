@@ -1,6 +1,6 @@
 # Random Password Generator
 
-## https://k-g-j.github.io/ch3-password-randomizer/
+## https://k-g-j.github.io/password-randomizer/ 
 
 ### Application accepts user input for password characters based on a series of prompts, validates the inputs, then generates random password 
 
